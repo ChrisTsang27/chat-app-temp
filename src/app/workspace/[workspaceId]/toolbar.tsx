@@ -9,7 +9,6 @@ import { useGetWorkspace } from "@/features/workspaces/api/use-get-workspace";
 import { Button } from "@/components/ui/button";
 import { useWorkspaceId } from "@/hooks/use-workspace-id";
 import {
-  Command,
   CommandDialog,
   CommandEmpty,
   CommandGroup,
@@ -17,7 +16,6 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-  CommandShortcut,
 } from "@/components/ui/command";
 
 export const Toolbar = () => {

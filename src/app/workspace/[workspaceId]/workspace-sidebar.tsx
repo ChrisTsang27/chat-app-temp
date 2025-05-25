@@ -26,6 +26,7 @@ export const WorkspaceSidebar = () => {
   const channelId = useChannelId();
   const workspaceId = useWorkspaceId();
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_open, setOpen] = useCreateChannelModal();
 
   const { data: member, isLoading: memberLoading } = useCurrentMember({
@@ -34,9 +35,11 @@ export const WorkspaceSidebar = () => {
   const { data: workspace, isLoading: workspaceLoading } = useGetWorkspace({
     id: workspaceId,
   });
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { data: channels, isLoading: channelsLoading } = useGetChannels({
     workspaceId,
   });
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { data: members, isLoading: membersLoading } = useGetMembers({
     workspaceId,
   });
