@@ -200,6 +200,7 @@ export const getById = query({
     );
 
     const reactionsWithoutMemberIdProperty = dedupedReactions.map(
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       ({ memberId, ...rest }) => rest
     );
 
@@ -302,6 +303,7 @@ export const get = query({
             );
 
             const reactionsWithoutMemberIdProperty = dedupedReactions.map(
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
               ({ memberId, ...rest }) => rest
             );
 

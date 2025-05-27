@@ -20,7 +20,20 @@ const schema = defineSchema({
   channels: defineTable({
     name: v.string(),
     workspaceId: v.id("workspaces"),
+    // New fields for private channels
+    isPrivate: v.optional(v.boolean()), // Default to false for existing channels
+    createdBy: v.optional(v.id("members")), // Admin who created the channel
   }).index("by_workspace_id", ["workspaceId"]),
+  // New table for private channel memberships
+  channelMembers: defineTable({
+    channelId: v.id("channels"),
+    memberId: v.id("members"),
+    addedBy: v.id("members"), // Admin who added this member
+    addedAt: v.number(), // Timestamp when member was added
+  })
+    .index("by_channel_id", ["channelId"])
+    .index("by_member_id", ["memberId"])
+    .index("by_channel_id_member_id", ["channelId", "memberId"]),
   conversations: defineTable({
     workspaceId: v.id("workspaces"),
     memberOneId: v.id("members"),
@@ -55,6 +68,13 @@ const schema = defineSchema({
     .index("by_workspace_id", ["workspaceId"])
     .index("by_message_id", ["messageId"])
     .index("by_member_id", ["memberId"]),
+  announcements: defineTable({
+    title: v.string(),
+    body: v.string(),
+    workspaceId: v.id("workspaces"),
+    createdBy: v.id("users"),
+    createdAt: v.number()
+  }).index("by_workspace_id", ["workspaceId"]),
 });
 
 export default schema;

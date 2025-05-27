@@ -10,6 +10,11 @@ import { Modals } from "@/components/modals";
 import { Toaster } from "@/components/ui/sonner";
 import { JotaiProvider } from "@/components/jotai-provider";
 
+
+import { AnnouncementPanelWrapper } from "@/components/announcement-panel-wrapper";
+
+
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -30,6 +35,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <ConvexAuthNextjsServerProvider>
       <html lang="en">
@@ -42,6 +48,7 @@ export default function RootLayout({
                 <Toaster />
                 <Modals />
                 {children}
+                <AnnouncementPanelWrapper />
               </NuqsAdapter>
             </JotaiProvider>
           </ConvexClientProvider>

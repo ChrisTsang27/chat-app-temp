@@ -21,6 +21,9 @@ import { SidebarItem } from "./sidebar-item";
 import { WorkspaceHeader } from "./workspace-header";
 import { WorkspaceSection } from "./workspace-section";
 
+
+
+
 export const WorkspaceSidebar = () => {
   const memberId = useMemberId();
   const channelId = useChannelId();
