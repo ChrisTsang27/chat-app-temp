@@ -21,6 +21,9 @@ import { SidebarItem } from "./sidebar-item";
 import { WorkspaceHeader } from "./workspace-header";
 import { WorkspaceSection } from "./workspace-section";
 
+import { Megaphone } from "lucide-react";
+import { usePathname } from "next/navigation";
+
 
 
 
@@ -28,6 +31,9 @@ export const WorkspaceSidebar = () => {
   const memberId = useMemberId();
   const channelId = useChannelId();
   const workspaceId = useWorkspaceId();
+  const pathname = usePathname();
+
+  
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_open, setOpen] = useCreateChannelModal();
@@ -73,6 +79,13 @@ export const WorkspaceSidebar = () => {
         isAdmin={member.role === "admin"}
       />
       <div className="flex flex-col px-2 mt-3">
+        <SidebarItem
+          label="Announcements"
+          icon={Megaphone}
+          id="announcements"
+          customHref={`/workspace/${workspaceId as string}/announcement`}
+          variant={pathname.includes("/announcement") ? "active" : "default"}
+        />
         <SidebarItem label="Threads" icon={MessageSquareText} id="threads" />
         <SidebarItem label="Drafts & Sent" icon={SendHorizonal} id="drafts" />
       </div>

@@ -101,7 +101,7 @@ export const Profile = ({ memberId, onClose }: ProfileProps) => {
     );
   };
 
-  const onUpdate = async (role: "admin" | "member") => {
+  const onUpdate = async (role: "admin" | "member" | "editor") => {
     const ok = await confirmUpdate();
 
     if (!ok) return;

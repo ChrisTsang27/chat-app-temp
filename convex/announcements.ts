@@ -32,3 +32,26 @@ export const listAnnouncementsByWorkspace = query({
       .collect();
   },
 });
+
+// Mutation: Delete announcement
+export const deleteAnnouncement = mutation({
+  args: { id: v.id("announcements") },
+  handler: async (ctx, args) => {
+    await ctx.db.delete(args.id);
+  },
+});
+
+// Mutation: Update announcement
+export const updateAnnouncement = mutation({
+  args: {
+    id: v.id("announcements"),
+    title: v.string(),
+    body: v.string(),
+  },
+  handler: async (ctx, args) => {
+    await ctx.db.patch(args.id, {
+      title: args.title,
+      body: args.body,
+    });
+  },
+});

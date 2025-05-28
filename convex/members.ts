@@ -117,7 +117,7 @@ export const current = query({
 export const update = mutation({
   args: {
     id: v.id("members"),
-    role: v.union(v.literal("admin"), v.literal("member")),
+    role: v.union(v.literal("admin"), v.literal("member"), v.literal("editor")),
   },
 
   handler: async (ctx, args) => {
